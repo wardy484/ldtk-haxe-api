@@ -1,5 +1,8 @@
 package ldtk;
 
+import flixel.FlxObject;
+import flixel.group.FlxGroup;
+
 class Layer_IntGrid extends ldtk.Layer {
 	var valueInfos : Array<{ identifier:Null<String>, color:UInt }> = [];
 
@@ -75,7 +78,7 @@ class Layer_IntGrid extends ldtk.Layer {
 		return !hasValue(cx,cy) ? null : ldtk.Project.intToHex( getValueInfos(getInt(cx,cy)).color );
 	}
 
-	public function createColliderFromIntGrid(grid:TDClass("Layer_" + l.identifier), collisionValue:Int):FlxTypedGroup<FlxObject> {
+	public function createColliderFromIntGrid(grid: Layer_IntGrid, collisionValue:Int):FlxTypedGroup<FlxObject> {
 		var group = new FlxTypedGroup<FlxObject>();
 
 		for (x in 0...grid.cWid) {
