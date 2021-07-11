@@ -78,17 +78,17 @@ class Layer_IntGrid extends ldtk.Layer {
 		return !hasValue(cx,cy) ? null : ldtk.Project.intToHex( getValueInfos(getInt(cx,cy)).color );
 	}
 
-	public function createColliderFromIntGrid(grid: Layer_IntGrid, collisionValue:Int):FlxTypedGroup<FlxObject> {
+	public function createColliderFromIntGrid(collisionValue:Int):FlxTypedGroup<FlxObject> {
 		var group = new FlxTypedGroup<FlxObject>();
 
-		for (x in 0...grid.cWid) {
-			for (y in 0...grid.cHei) {
-				var tile = grid.getInt(x, y);
+		for (x in 0...this.cWid) {
+			for (y in 0...this.cHei) {
+				var tile = this.getInt(x, y);
 
 				if (tile != collisionValue)
 					continue;
 
-				var size = grid.gridSize;
+				var size = this.gridSize;
 				var rect = new FlxObject(x * size, y * size, size, size);
 				rect.immovable = true;
 				group.add(rect);
